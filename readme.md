@@ -4,13 +4,13 @@
     - create infrastructure - "vagrant up"  
     - clear envairement - "vagrant destroy"   
 
-4. Connect to postgres DB - "psql -h 10.0.0.4 -p 5432 -U postgres", pass - "mysecretpassword"  
+4. Connect to postgres DB - ```psql -h 10.0.0.4 -p 5432 -U postgres```, pass - "mysecretpassword"  
 
 Connect to VN - "vagrant ssh", "vagrant ssh-config".  
 vagrant status  
 
 Result  
-"
+```
 CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                       NAMES
 4b174d5c6df7   postgres:latest   "docker-entrypoint.s…"   24 minutes ago   Up 24 minutes   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   postgres-latest
 vagrant@ubuntu:~$ docker exec -it 4b174d5c6df7  bash
@@ -22,5 +22,5 @@ postgres=# CREATE DATABASE test;
 CREATE DATABASE
 postgres=# \q  
 root@4b174d5c6df7:/# 
-"
+```
 
