@@ -2,9 +2,12 @@
 2. Instal VirtualBox  
 3. Create Vagrantfile  
     - create infrastructure - "vagrant up"  
-    - clear envairement - "vagrant destroy"   
+    - clear envairement - "vagrant destroy"  
+4. Create user `thermo` with existing ssh_key.  
+5. Install docker and run conteiner with postgres latest version  
 
-4. Connect to postgres DB - ```psql -h 10.0.0.4 -p 5432 -U postgres```, pass - "mysecretpassword"  
+
+ Connect to postgres DB - ```psql -h 10.0.0.4 -p 5432 -U postgres```, pass - "mysecretpassword"  
 
 Connect to VN - "vagrant ssh", "vagrant ssh-config".  
 vagrant status  

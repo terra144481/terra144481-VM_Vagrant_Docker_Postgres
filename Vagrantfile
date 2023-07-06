@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
       end
 
 
-# Configure envarement: update, check openssh, add user "terminal" with ssh key
+# Configure envarement: update, check openssh, add user "thermo" with ssh key
 # -----------------------------------------------------------------------------
     config.vm.provision "shell", path: "script.sh"
     config.vm.provision "shell" do |s|
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
 # or choose path to id_rsa.pub      
 #     ssh_pub_key = File.readlines("#{Dir.home}/.ssh/test/id_rsa.pub").first.strip
       s.inline = <<-SHELL
-        echo #{ssh_pub_key} >> /home/terminal/.ssh/authorized_keys
+        echo #{ssh_pub_key} >> /home/thermo/.ssh/authorized_keys
       SHELL
     end
 
