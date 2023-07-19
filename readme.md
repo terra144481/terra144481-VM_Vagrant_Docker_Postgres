@@ -1,16 +1,26 @@
+Fixed bugs in task:
+- update [script.sh](https://github.com/terra144481/terra144481-VM_Vagrant_Docker_Postgres/blob/29cd754e97c139885b92ce4efa11a117ea0175c7/script.sh) - delete password confirmation from thermo user, line 5  
+- update [vagrantfile](https://github.com/terra144481/terra144481-VM_Vagrant_Docker_Postgres/blob/29cd754e97c139885b92ce4efa11a117ea0175c7/Vagrantfile) - add restart container after rebooting system + add thermo to docker group  
+- add gitignore file
+
+
+
+
+
 1. Install Vagrant (https://developer.hashicorp.com/vagrant/docs/installation)  
 2. Instal VirtualBox  
 3. Create Vagrantfile  
-    - create infrastructure - "vagrant up"  
-    - clear envairement - "vagrant destroy"  
+    - create infrastructure - ```vagrant up```  
+    - clear envairement - ```vagrant destroy```  
+    - ```vagrant status```
 4. Create user `thermo` with existing ssh_key.  
 5. Install docker and run conteiner with postgres latest version  
 
 
  Connect to postgres DB - ```psql -h 10.0.0.4 -p 5432 -U postgres```, pass - "mysecretpassword"  
 
-Connect to VN - "vagrant ssh", "vagrant ssh-config".  
-vagrant status  
+Connect to VM - ```"vagrant ssh", "vagrant ssh-config"```.    
+Connect as user thermo - ```ssh thermo@10.0.0.4 -i "path to id_rsa key"```  
 
 Result  
 ```
