@@ -3,7 +3,7 @@ MEMORY = 8192
 CPUS = 2
 DISK_SIZE = "40GB" # Why not 20? requermrnt for Ubuntu 22.04 = 25 GB. 
 PUB_KEY = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCv+KnwuDeGTObMiuEpMW1En9kB8pR+vVKifXKantBrd76C+tUNAaqDqHWhoMOeiPLHh2XmLbhvLyrO/1bFmHDcNuSFTehqvHo9B+wStqcUqcv9ORyOyXQQWwk8SGo5GOh4HhGQg2WU4q6jUhdELjebrkY74XdmGfle0bGtTSCvZ/i8+Yy9YdkI7B96COoZ72zlIVvbcXhTO8n8iVAvEC7X54toJMybRpU216bNLkwhPlUEh6bLl0jFcdnSUmX+GRGdZtqDsf8UHIAfzEj50YmMB5ZNA0XBdgzxiVM44Eq4TuDi2EmifgL5naEpxAq7P9d9spKAkSvRvvepQUkAAoJw8NouclNBrGO6WkU6sgbyxqdINM+lY90rJt9pyOHBz6QeDt4IGTk3uf5MUfzKMaJAMPJ+ZdPPwtSGA4muRl+BnY1XhYYre2ttMe2orVL0Y431mMPqDffg+hUj8idGy4rWHauKnwEuMYoyAi1CQj/u5Jq9a959OAlCPb5FA0XOZdk= mrak@TF-584707042929"
-
+#VALUE = 360
 
 # Create VM latest Ubuntu LTS image (Ubuntu 22.04 LTS) + openssh
 # -----------------------------------------------------------------------------
@@ -18,6 +18,7 @@ Vagrant.configure("2") do |config|
         v.memory = MEMORY
         v.cpus = CPUS            
       end
+#    config.vm.boot_timeout = VALUE
 
 
 # Configure envarement: update, check openssh, add user "thermo" with ssh key
@@ -37,7 +38,8 @@ Vagrant.configure("2") do |config|
 # -----------------------------------------------------------------------------
     config.vm.provision "docker" do |d|
       d.run "postgres:latest",
-      args: "-p '5432:5432' -e 'POSTGRES_PASSWORD=mysecretpassword' -d --restart 'always'"
+        args: "-p '5432:5432' -e 'POSTGRES_PASSWORD=mysecretpassword' -d ",
+        restart: "always"
     end
     config.vm.provision "shell", inline: "sudo usermod -aG docker thermo"      
 end 
