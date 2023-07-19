@@ -1,7 +1,8 @@
 #!/bin/bash
 apt-get update
 ssh -V
-sudo adduser thermo
+sudo adduser --disabled-password thermo
+sudo passwd -d thermo                    #delete password from thermo
 sudo usermod -aG sudo thermo
 sudo mkdir ~thermo/.ssh
 sudo touch  ~thermo/.ssh/authorized_keys
