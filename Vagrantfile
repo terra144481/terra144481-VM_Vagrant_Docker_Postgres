@@ -37,7 +37,8 @@ Vagrant.configure("2") do |config|
 # -----------------------------------------------------------------------------
     config.vm.provision "docker" do |d|
       d.run "postgres:latest",
-      args: "-p '5432:5432' -e 'POSTGRES_PASSWORD=mysecretpassword' -d "
-    end      
+      args: "-p '5432:5432' -e 'POSTGRES_PASSWORD=mysecretpassword' -d --restart 'always'"
+    end
+    config.vm.provision "shell", inline: "sudo usermod -aG docker thermo"      
 end 
 
